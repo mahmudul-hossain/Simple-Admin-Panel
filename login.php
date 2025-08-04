@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="login-page bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
-                  <h3 class="mb-3">Login Now</h3>
+                    <h3 class="mb-3">Login Now</h3>
                     <div class="bg-white shadow rounded">
                         <div class="row">
                             <div class="col-md-7 pe-0">
@@ -66,5 +68,6 @@
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/custom.js"></script>
-  </body>
+</body>
+
 </html>
