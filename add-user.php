@@ -31,10 +31,14 @@ if (!empty($_POST)) {
 
   $insert = "INSERT INTO  user_table(full_name,user_phone,user_email,user_name,password,confirm_password,user_role,user_photo)VALUES('$full_name','$user_phone','$user_email','$user_name','$password','$confirm_password','$user_role','$user_photo')";
 
-  if (mysqli_query($connect, $insert)) {
-    echo "User Registration Successful";
+  if ($password == $confirm_password) {
+    if (mysqli_query($connectDatabase, $insert)) {
+      header("Location:all-user.php");
+    } else {
+      echo "User Registration Failed";
+    }
   } else {
-    echo "User Registration Failed";
+    echo "Confirm Password Doesn't Match";
   }
 }
 

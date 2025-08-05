@@ -38,21 +38,30 @@ get_sidebar();
         <table class="table table-bordered table-striped table-hover custom_table">
           <thead class="table-dark">
             <tr>
+              <th>User-ID</th>
               <th>Name</th>
               <th>Phone</th>
               <th>Email</th>
               <th>Username</th>
               <th>Role</th>
-              <th>Manage</th>
+              <th>Photo</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
+            <?php
+              $dataSelect= "SELECT * FROM user_table ORDER BY user_id ASC";
+              $dataQuery= mysqli_query($connectDatabase,$dataSelect);
+              while($dataFetch=mysqli_fetch_array($dataQuery)){
+            ?>
             <tr>
-              <td>Mahmudul Hossain</td>
-              <td>01728053288</td>
-              <td>mahmudul@gmail.com</td>
-              <td>mahmuddevs</td>
-              <td>---</td>
+              <td><?=$dataFetch['user_id']?></td>
+              <td><?=$dataFetch['full_name']?></td>
+              <td><?=$dataFetch['user_phone']?></td>
+              <td><?=$dataFetch['user_email']?></td>
+              <td><?=$dataFetch['user_name']?></td>
+              <td><?=$dataFetch['user_role']?></td>
+              <td><?=$dataFetch['user_photo']?></td>
               <td>
                 <div class="btn-group btn_group_manage" role="group">
                   <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
@@ -64,40 +73,9 @@ get_sidebar();
                 </div>
               </td>
             </tr>
-            <tr>
-              <td>UYLAB</td>
-              <td>01958420252</td>
-              <td>uylab.contact@gmail.com</td>
-              <td>uylab</td>
-              <td>---</td>
-              <td>
-                <div class="btn-group btn_group_manage" role="group">
-                  <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">View</a></li>
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Abir Mahmud</td>
-              <td>01711000000</td>
-              <td>uylab.abirmahamud@gmail.com</td>
-              <td>abir</td>
-              <td>---</td>
-              <td>
-                <div class="btn-group btn_group_manage" role="group">
-                  <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">View</a></li>
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+            <?php 
+                            }
+            ?>
           </tbody>
         </table>
       </div>
