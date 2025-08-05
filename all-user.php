@@ -50,31 +50,31 @@ get_sidebar();
           </thead>
           <tbody>
             <?php
-              $dataSelect= "SELECT * FROM user_table ORDER BY user_id ASC";
-              $dataQuery= mysqli_query($connectDatabase,$dataSelect);
-              while($dataFetch=mysqli_fetch_array($dataQuery)){
+            $dataSelect = "SELECT * FROM user_table ORDER BY user_id ASC";
+            $dataQuery = mysqli_query($connectDatabase, $dataSelect);
+            while ($dataFetch = mysqli_fetch_array($dataQuery)) {
             ?>
-            <tr>
-              <td><?=$dataFetch['user_id']?></td>
-              <td><?=$dataFetch['full_name']?></td>
-              <td><?=$dataFetch['user_phone']?></td>
-              <td><?=$dataFetch['user_email']?></td>
-              <td><?=$dataFetch['user_name']?></td>
-              <td><?=$dataFetch['user_role']?></td>
-              <td><?=$dataFetch['user_photo']?></td>
-              <td>
-                <div class="btn-group btn_group_manage" role="group">
-                  <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="view-user.php">View</a></li>
-                    <li><a class="dropdown-item" href="edit-user.php">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <?php 
-                            }
+              <tr>
+                <td><?= $dataFetch['user_id'] ?></td>
+                <td><?= $dataFetch['full_name'] ?></td>
+                <td><?= $dataFetch['user_phone'] ?></td>
+                <td><?= $dataFetch['user_email'] ?></td>
+                <td><?= $dataFetch['user_name'] ?></td>
+                <td><?= $dataFetch['user_role'] ?></td>
+                <td><?= $dataFetch['user_photo'] ?></td>
+                <td>
+                  <div class="btn-group btn_group_manage" role="group">
+                    <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="view-user.php">View</a></li>
+                      <li><a class="dropdown-item" href="edit-user.php">Edit</a></li>
+                      <li><a class="dropdown-item" href="#">Delete</a></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <?php
+            }
             ?>
           </tbody>
         </table>
