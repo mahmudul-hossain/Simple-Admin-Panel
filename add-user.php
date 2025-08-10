@@ -15,6 +15,11 @@
 
 // include_once "database.php";
 
+// echo ('user-');
+// echo time()."-";
+// echo rand(100,10000000000);
+// echo ('.jpg');
+
 require_once "all_function/functions.php";
 
 if (!empty($_POST)) {
@@ -27,12 +32,15 @@ if (!empty($_POST)) {
   // $confirm_password= $_POST['confirm-password'];
   $confirm_password = md5($_POST['confirm-password']);
   $user_role = $_POST['user-role'];
-  $user_photo = $_POST['user-photo'];
+  $user_photo = $_FILES['user-photo'];
 
-  $insert = "INSERT INTO  user_table(full_name,user_phone,user_email,user_name,password,confirm_password,user_role,user_photo)VALUES('$full_name','$user_phone','$user_email','$user_name','$password','$confirm_password','$user_role','$user_photo')";
+  $user_photo_name = 'user-'.time().'-'.rand(1000,1000000000).'.'.pathinfo($user_photo['name'],PATHINFO_EXTENSION);
+
+  $insert = "INSERT INTO  user_table(full_name,user_phone,user_email,user_name,password,confirm_password,user_role,user_photo)VALUES('$full_name','$user_phone','$user_email','$user_name','$password','$confirm_password','$user_role','$user_photo_name')";
 
   if ($password == $confirm_password) {
     if (mysqli_query($connectDatabase, $insert)) {
+      move_uploaded_file($user_photo['tmp_name'], 'upload-images/'.$user_photo_name);
       header("Location:all-user.php");
     } else {
       echo "User Registration Failed";
@@ -46,9 +54,10 @@ get_header();
 get_sidebar();
 
 ?>
+
 <div class="row">
   <div class="col-md-12 ">
-    <form method="post" action="">
+    <form method="post" action="" enctype="multipart/form-data">
       <div class="card mb-3">
         <div class="card-header">
           <div class="row">
