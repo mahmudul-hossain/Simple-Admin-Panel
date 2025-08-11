@@ -119,7 +119,7 @@ get_sidebar();
           <div class="row mb-3">
             <label class="col-sm-3 col-form-label col_form_label">Photo<span class="req_star">*</span>:</label>
             <div class="col-sm-4">
-              <input type="file" class="form-control form_control" id="" name="user-photo" required>
+              <input type="file" class="form-control form_control" id="" name="user-photo">
             </div>
           </div>
         </div>

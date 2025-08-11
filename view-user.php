@@ -67,7 +67,7 @@ get_sidebar();
                 <td>Photo</td>
                 <td>:</td>
                 <td>
-                  <img class="img200" src="images\Mahmudul Hossain.jpg" alt="" />
+                  <img class="img200" src="images\avatar.jpg" alt="" />
                 </td>
               </tr>
             </table>
