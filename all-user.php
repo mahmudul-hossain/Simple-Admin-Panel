@@ -62,7 +62,7 @@ get_sidebar();
                 <td><?= $dataFetch['user_name']; ?></td>
                 <td>---</td>
                 <td>
-                  <?php if ($dataFetch['user_photo'] !== '') { ?>
+                  <?php if ($dataFetch['user_photo']!== '') { ?>
                     <img height="40" src="upload-images/<?= $dataFetch['user_photo']; ?>" alt="" />
                   <?php } else { ?>
                     <img height="40" src="images/avatar.jpg" alt="" />
