@@ -33,9 +33,11 @@ if (!empty($_POST)) {
   $confirm_password = md5($_POST['confirm-password']);
   $user_role = $_POST['user-role'];
   $user_photo = $_FILES['user-photo'];
-
-  $user_photo_name = 'user-'.time().'-'.rand(1000,1000000000).'.'.pathinfo($user_photo['name'],PATHINFO_EXTENSION);
-
+  $user_photo_name = '';
+  
+  if ($user_photo['name']!=''){
+    $user_photo_name = 'user-'.time().'-'.rand(1000,1000000000).'.'.pathinfo($user_photo['name'],PATHINFO_EXTENSION);
+  }
   $insert = "INSERT INTO  user_table(full_name,user_phone,user_email,user_name,password,confirm_password,user_role,user_photo)VALUES('$full_name','$user_phone','$user_email','$user_name','$password','$confirm_password','$user_role','$user_photo_name')";
 
   if ($password == $confirm_password) {
