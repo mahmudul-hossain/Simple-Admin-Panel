@@ -16,6 +16,13 @@
 // include_once "database.php";
 
 require_once "all_function/functions.php";
+
+$userID=$_GET['view'];
+$view="SELECT * FROM user_table WHERE user_id='$userID'";
+
+$dataQuery= mysqli_query($connectDatabase,$view);
+$dataFetch = mysqli_fetch_array($dataQuery);
+
 get_header();
 get_sidebar();
 
@@ -41,22 +48,22 @@ get_sidebar();
               <tr>
                 <td>Name</td>
                 <td>:</td>
-                <td>Mahmudul Hossain</td>
+                <td><?= $dataFetch['full_name']; ?></td>
               </tr>
               <tr>
                 <td>Phone</td>
                 <td>:</td>
-                <td>01728053288</td>
+                <td><?= $dataFetch['user_phone']; ?></td>
               </tr>
               <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td>mahmudul@gmail.com</td>
+                <td><?= $dataFetch['user_email']; ?></td>
               </tr>
               <tr>
                 <td>Username</td>
                 <td>:</td>
-                <td>mahmuddevs</td>
+                <td><?= $dataFetch['user_name']; ?></td>
               </tr>
               <tr>
                 <td>Role</td>
@@ -67,7 +74,11 @@ get_sidebar();
                 <td>Photo</td>
                 <td>:</td>
                 <td>
-                  <img class="img200" src="images/avatar.jpg" alt="" />
+                  <?php if ($dataFetch['user_photo']!== '') { ?>
+                    <img height="250" src="upload-images/<?= $dataFetch['user_photo']; ?>" alt="" />
+                  <?php } else { ?>
+                    <img height="250" src="images/avatar.jpg" alt="" />
+                  <?php } ?>
                 </td>
               </tr>
             </table>
