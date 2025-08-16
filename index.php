@@ -31,6 +31,7 @@ get_sidebar();
 <div class="row">
     <div class="col-md-12 welcome_part text-center">
         <p><span>Welcome Mr.</span> Mahmudul Hossain</p>
+        <img src="images\avatar.jpg" class="img-fluid mt-5 border-dark rounded-3">
     </div>
 </div>
 

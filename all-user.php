@@ -50,7 +50,7 @@ get_sidebar();
           </thead>
           <tbody>
             <?php
-            $dataSelect = "SELECT * FROM user_table ORDER BY user_id ASC";
+            $dataSelect = "SELECT * FROM user_table NATURAL JOIN user_roles ORDER BY user_id ASC";
             $dataQuery = mysqli_query($connectDatabase, $dataSelect);
             while ($dataFetch = mysqli_fetch_array($dataQuery)) {
             ?>
@@ -60,7 +60,7 @@ get_sidebar();
                 <td><?= $dataFetch['user_phone']; ?></td>
                 <td><?= $dataFetch['user_email']; ?></td>
                 <td><?= $dataFetch['user_name']; ?></td>
-                <td>---</td>
+                <td><?= $dataFetch['role_name']; ?></td>
                 <td>
                   <?php if ($dataFetch['user_photo']!== '') { ?>
                     <img height="40" src="upload-images/<?= $dataFetch['user_photo']; ?>" alt="" />

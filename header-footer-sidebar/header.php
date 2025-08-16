@@ -19,7 +19,7 @@
         <div class="col-md-3 top_right_menu text-end">
           <div class="dropdown">
             <button class="btn dropdown-toggle top_right_btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="images\Mahmudul Hossain.jpg" class="img-fluid">
+              <img src="images\avatar.jpg" class="img-fluid">
               Mahmudul Hossain
             </button>
             <ul class="dropdown-menu">

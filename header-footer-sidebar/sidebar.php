@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-2 sidebar_part">
                 <div class="user_part">
-                    <img class="" src="images\Mahmudul Hossain.jpg" alt="avatar" />
+                    <img class="" src="images\avatar.jpg" alt="avatar" />
                     <h5>Mahmudul Hossain</h5>
                     <p><i class="fas fa-circle"></i> Online</p>
                 </div>
