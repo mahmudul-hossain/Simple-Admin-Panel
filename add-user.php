@@ -38,7 +38,7 @@ if (!empty($_POST)) {
   if ($user_photo['name']!=''){
     $user_photo_name = 'user-'.time().'-'.rand(1000,1000000000).'.'.pathinfo($user_photo['name'],PATHINFO_EXTENSION);
   }
-  $insert = "INSERT INTO  user_table(full_name,user_phone,user_email,user_name,password,confirm_password,user_role,user_photo)VALUES('$full_name','$user_phone','$user_email','$user_name','$password','$confirm_password','$user_role','$user_photo_name')";
+  $insert = "INSERT INTO  user_table(full_name,user_phone,user_email,user_name,password,confirm_password,user_role_id,user_photo)VALUES('$full_name','$user_phone','$user_email','$user_name','$password','$confirm_password','$user_role','$user_photo_name')";
 
   if ($password == $confirm_password) {
     if (mysqli_query($connectDatabase, $insert)) {
@@ -115,12 +115,12 @@ get_sidebar();
                 <option>Select Role</option>
 
                 <?php
-                  $dataSelect = "SELECT * FROM user_roles ORDER BY role_id ASC";
+                  $dataSelect = "SELECT * FROM user_roles ORDER BY user_role_id ASC";
                   $dataQuery = mysqli_query($connectDatabase, $dataSelect);
                   while ($dataFetch = mysqli_fetch_array($dataQuery)) {
                 ?>
                 
-                <option value="<?= $dataFetch['role_id']; ?>"><?= $dataFetch['role_name']; ?></option>
+                <option value="<?= $dataFetch['user_role_id']; ?>"><?= $dataFetch['user_role_name']; ?></option>
                   
                 <?php
                   }
