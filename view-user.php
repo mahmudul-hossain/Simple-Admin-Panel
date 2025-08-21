@@ -18,7 +18,7 @@
 require_once "all_function/functions.php";
 
 $userID=$_GET['view'];
-$view="SELECT * FROM user_table WHERE user_id='$userID'";
+$view="SELECT * FROM user_table NATURAL JOIN user_roles WHERE user_id='$userID'";
 
 $dataQuery= mysqli_query($connectDatabase,$view);
 $dataFetch = mysqli_fetch_array($dataQuery);
@@ -68,7 +68,7 @@ get_sidebar();
               <tr>
                 <td>Role</td>
                 <td>:</td>
-                <td>---</td>
+                <td><?= $dataFetch['user_role_name']; ?></td>
               </tr>
               <tr>
                 <td>Photo</td>
