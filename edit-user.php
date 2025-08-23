@@ -29,16 +29,24 @@ if (!empty($_POST)) {
   $user_name = $_POST['user-name'];
   $user_role = $_POST['user-role'];
   $user_photo = $_FILES['user-photo'];
-  $user_photo_name = '';
   
-  if ($user_photo['name']!=''){
-    $user_photo_name = 'user-'.time().'-'.rand(1000,1000000000).'.'.pathinfo($user_photo['name'],PATHINFO_EXTENSION);
-  }
-  $update = "UPDATE  user_table SET full_name='$full_name',user_phone='$user_phone',user_email='$user_email', user_name='$user_name' WHERE user_id='$userID'";
+  $update = "UPDATE  user_table SET full_name='$full_name',user_phone='$user_phone',user_email='$user_email', user_name='$user_name', user_role_id='$user_role' WHERE user_id='$userID'";
+
+    if ($user_photo['name']!=''){
+    }
 
     if (mysqli_query($connectDatabase, $update)) {
-      move_uploaded_file($user_photo['tmp_name'], 'upload-images/'.$user_photo_name);
-      header("Location:all-user.php");
+        if ($user_photo['name']!=''){
+          $user_photo_name = 'user-'.time().'-'.rand(1000,1000000000).'.'.pathinfo($user_photo['name'],PATHINFO_EXTENSION);
+          $user_photo_update="UPDATE user_table SET user_photo='$user_photo_name' WHERE user_id='$userID'";
+          if(mysqli_query($connectDatabase, $user_photo_update)){
+            move_uploaded_file($user_photo['tmp_name'],'upload-images/'.$user_photo_name);
+            header('Location:view-user.php?view='.$userID);
+          }
+        } else{
+          echo "User Photo Update Failed";
+        }
+      header("Location:view-user.php?view=".$userID);
     } else {
       echo "User Registration Failed";
     }
