@@ -3,9 +3,9 @@
 require_once "all_function/functions.php";
 
 $userID=$_GET['delete'];
-$delete="DELETE FROM user_table WHERE user_id='$userID'";
+$dataSelect="DELETE FROM user_table WHERE user_id='$userID'";
 
-if(mysqli_query($connectDatabase,$delete)){
+if(mysqli_query($connectDatabase,$dataSelect)){
     header("Location:all-user.php");
 }
 

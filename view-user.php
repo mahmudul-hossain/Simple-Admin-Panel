@@ -18,9 +18,8 @@
 require_once "all_function/functions.php";
 
 $userID=$_GET['view'];
-$view="SELECT * FROM user_table NATURAL JOIN user_roles WHERE user_id='$userID'";
-
-$dataQuery= mysqli_query($connectDatabase,$view);
+$dataSelect="SELECT * FROM user_table NATURAL JOIN user_roles WHERE user_id='$userID'";
+$dataQuery= mysqli_query($connectDatabase,$dataSelect);
 $dataFetch = mysqli_fetch_array($dataQuery);
 
 get_header();

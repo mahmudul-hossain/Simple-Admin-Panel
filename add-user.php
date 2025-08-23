@@ -113,14 +113,13 @@ get_sidebar();
             <div class="col-sm-4">
               <select class="form-control form_control" id="" name="user-role" required>
                 <option>Select Role</option>
-
                 <?php
                   $dataSelect = "SELECT * FROM user_roles ORDER BY user_role_id ASC";
-                  $dataQuery = mysqli_query($connectDatabase, $dataSelect);
-                  while ($dataFetch = mysqli_fetch_array($dataQuery)) {
+                  $roleDataQuery = mysqli_query($connectDatabase, $dataSelect);
+                  while ($roleDataFetch = mysqli_fetch_array($roleDataQuery)) {
                 ?>
                 
-                <option value="<?= $dataFetch['user_role_id']; ?>"><?= $dataFetch['user_role_name']; ?></option>
+                <option value="<?= $roleDataFetch['user_role_id']; ?>"><?= $roleDataFetch['user_role_name']; ?></option>
                   
                 <?php
                   }
