@@ -17,9 +17,9 @@
 
 require_once "all_function/functions.php";
 
-$userID=$_GET['edit'];
-$dataSelect="SELECT * FROM user_table WHERE user_id='$userID'";
-$dataQuery= mysqli_query($connectDatabase,$dataSelect);
+$userID = $_GET['edit'];
+$dataSelect = "SELECT * FROM user_table WHERE user_id='$userID'";
+$dataQuery = mysqli_query($connectDatabase, $dataSelect);
 $dataFetch = mysqli_fetch_array($dataQuery);
 
 if (!empty($_POST)) {
@@ -29,27 +29,27 @@ if (!empty($_POST)) {
   $user_name = $_POST['user-name'];
   $user_role = $_POST['user-role'];
   $user_photo = $_FILES['user-photo'];
-  
+
   $update = "UPDATE  user_table SET full_name='$full_name',user_phone='$user_phone',user_email='$user_email', user_name='$user_name', user_role_id='$user_role' WHERE user_id='$userID'";
 
-    if ($user_photo['name']!=''){
-    }
+  if ($user_photo['name'] != '') {
+  }
 
-    if (mysqli_query($connectDatabase, $update)) {
-        if ($user_photo['name']!=''){
-          $user_photo_name = 'user-'.time().'-'.rand(1000,1000000000).'.'.pathinfo($user_photo['name'],PATHINFO_EXTENSION);
-          $user_photo_update="UPDATE user_table SET user_photo='$user_photo_name' WHERE user_id='$userID'";
-          if(mysqli_query($connectDatabase, $user_photo_update)){
-            move_uploaded_file($user_photo['tmp_name'],'upload-images/'.$user_photo_name);
-            header('Location:view-user.php?view='.$userID);
-          }
-        } else{
-          echo "User Photo Update Failed";
-        }
-      header("Location:view-user.php?view=".$userID);
+  if (mysqli_query($connectDatabase, $update)) {
+    if ($user_photo['name'] != '') {
+      $user_photo_name = 'user-' . time() . '-' . rand(1000, 1000000000) . '.' . pathinfo($user_photo['name'], PATHINFO_EXTENSION);
+      $user_photo_update = "UPDATE user_table SET user_photo='$user_photo_name' WHERE user_id='$userID'";
+      if (mysqli_query($connectDatabase, $user_photo_update)) {
+        move_uploaded_file($user_photo['tmp_name'], 'upload-images/' . $user_photo_name);
+        header('Location:view-user.php?view=' . $userID);
+      }
     } else {
-      echo "User Registration Failed";
+      echo "User Photo Update Failed";
     }
+    header("Location:view-user.php?view=" . $userID);
+  } else {
+    echo "User Registration Failed";
+  }
 }
 
 get_header();
@@ -103,15 +103,17 @@ get_sidebar();
                 <option>Select Role</option>
 
                 <?php
-                  $dataSelect = "SELECT * FROM user_roles ORDER BY user_role_id ASC";
-                  $roleDataQuery = mysqli_query($connectDatabase, $dataSelect);
-                  while ($roleDataFetch = mysqli_fetch_array($roleDataQuery)) {
+                $dataSelect = "SELECT * FROM user_roles ORDER BY user_role_id ASC";
+                $roleDataQuery = mysqli_query($connectDatabase, $dataSelect);
+                while ($roleDataFetch = mysqli_fetch_array($roleDataQuery)) {
                 ?>
-                
-                <option value="<?= $roleDataFetch['user_role_id']; ?>"<?php if($roleDataFetch['user_role_id']==$dataFetch['user_role_id']){echo 'selected';}?>><?= $roleDataFetch['user_role_name']; ?></option>
-                  
+
+                  <option value="<?= $roleDataFetch['user_role_id']; ?>" <?php if ($roleDataFetch['user_role_id'] == $dataFetch['user_role_id']) {
+                                                                            echo 'selected';
+                                                                          } ?>><?= $roleDataFetch['user_role_name']; ?></option>
+
                 <?php
-                  }
+                }
                 ?>
               </select>
             </div>
@@ -122,7 +124,7 @@ get_sidebar();
               <input type="file" class="form-control form_control" id="" name="user-photo">
             </div>
             <div class="col-md-2">
-              <?php if ($dataFetch['user_photo']!== '') { ?>
+              <?php if ($dataFetch['user_photo'] !== '') { ?>
                 <img height="75" src="upload-images/<?= $dataFetch['user_photo']; ?>" alt="" />
               <?php } else { ?>
                 <img height="75" src="images/avatar.jpg" alt="" />

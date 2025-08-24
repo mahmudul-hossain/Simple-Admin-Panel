@@ -62,7 +62,7 @@ get_sidebar();
                 <td><?= $dataFetch['user_name']; ?></td>
                 <td><?= $dataFetch['user_role_name']; ?></td>
                 <td>
-                  <?php if ($dataFetch['user_photo']!== '') { ?>
+                  <?php if ($dataFetch['user_photo'] !== '') { ?>
                     <img height="40" src="upload-images/<?= $dataFetch['user_photo']; ?>" alt="" />
                   <?php } else { ?>
                     <img height="40" src="images/avatar.jpg" alt="" />
@@ -70,11 +70,15 @@ get_sidebar();
                 </td>
                 <td>
                   <div class="btn-group btn_group_manage" role="group">
-                    <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
+                    <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                      aria-expanded="false">Manage</button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="view-user.php?view=<?php echo $dataFetch['user_id'];?>">View</a></li>
-                      <li><a class="dropdown-item" href="edit-user.php?edit=<?php echo $dataFetch['user_id'];?>">Edit</a></li>
-                      <li><a class="dropdown-item" href="delete.php?delete=<?php echo $dataFetch['user_id'];?>">Delete</a></li>
+                      <li><a class="dropdown-item" href="view-user.php?view=<?php echo $dataFetch['user_id']; ?>">View</a>
+                      </li>
+                      <li><a class="dropdown-item" href="edit-user.php?edit=<?php echo $dataFetch['user_id']; ?>">Edit</a>
+                      </li>
+                      <li><a class="dropdown-item" href="delete.php?delete=<?php echo $dataFetch['user_id']; ?>">Delete</a>
+                      </li>
                     </ul>
                   </div>
                 </td>

@@ -34,15 +34,15 @@ if (!empty($_POST)) {
   $user_role = $_POST['user-role'];
   $user_photo = $_FILES['user-photo'];
   $user_photo_name = '';
-  
-  if ($user_photo['name']!=''){
-    $user_photo_name = 'user-'.time().'-'.rand(1000,1000000000).'.'.pathinfo($user_photo['name'],PATHINFO_EXTENSION);
+
+  if ($user_photo['name'] != '') {
+    $user_photo_name = 'user-' . time() . '-' . rand(1000, 1000000000) . '.' . pathinfo($user_photo['name'], PATHINFO_EXTENSION);
   }
   $insert = "INSERT INTO  user_table(full_name,user_phone,user_email,user_name,password,confirm_password,user_role_id,user_photo)VALUES('$full_name','$user_phone','$user_email','$user_name','$password','$confirm_password','$user_role','$user_photo_name')";
 
   if ($password == $confirm_password) {
     if (mysqli_query($connectDatabase, $insert)) {
-      move_uploaded_file($user_photo['tmp_name'], 'upload-images/'.$user_photo_name);
+      move_uploaded_file($user_photo['tmp_name'], 'upload-images/' . $user_photo_name);
       header("Location:all-user.php");
     } else {
       echo "User Registration Failed";
@@ -114,15 +114,15 @@ get_sidebar();
               <select class="form-control form_control" id="" name="user-role" required>
                 <option>Select Role</option>
                 <?php
-                  $dataSelect = "SELECT * FROM user_roles ORDER BY user_role_id ASC";
-                  $roleDataQuery = mysqli_query($connectDatabase, $dataSelect);
-                  while ($roleDataFetch = mysqli_fetch_array($roleDataQuery)) {
+                $dataSelect = "SELECT * FROM user_roles ORDER BY user_role_id ASC";
+                $roleDataQuery = mysqli_query($connectDatabase, $dataSelect);
+                while ($roleDataFetch = mysqli_fetch_array($roleDataQuery)) {
                 ?>
-                
-                <option value="<?= $roleDataFetch['user_role_id']; ?>"><?= $roleDataFetch['user_role_name']; ?></option>
-                  
+
+                  <option value="<?= $roleDataFetch['user_role_id']; ?>"><?= $roleDataFetch['user_role_name']; ?></option>
+
                 <?php
-                  }
+                }
                 ?>
               </select>
             </div>
