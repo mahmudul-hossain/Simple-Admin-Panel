@@ -16,8 +16,10 @@
 // include_once "database.php";
 
 require_once "all_function/functions.php";
+needLogin();
 
-$userID = $_GET['edit'];
+$userID = $_GET['edit'] ?? $_SESSION['userID'];
+
 $dataSelect = "SELECT * FROM user_table WHERE user_id='$userID'";
 $dataQuery = mysqli_query($connectDatabase, $dataSelect);
 $dataFetch = mysqli_fetch_array($dataQuery);

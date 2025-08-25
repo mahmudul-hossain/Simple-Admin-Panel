@@ -42,15 +42,21 @@ body {
     padding: 4px 0px 4px;
 
 }
-
+.site_logo img{
+    width: 300px;
+    height: 100%;
+}
 .top_right_btn {
     border: none !important;
+    color: #fff;
 }
 
 .top_right_btn img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border: 2px solid #fff;
+    margin-right: 5px;
 }
 
 .top_right_menu ul li a {
@@ -158,11 +164,18 @@ body {
 .welcome_part {
     color: #4d6299;
     font-size: 72px;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .welcome_part p span {
     font-weight: bold;
+}
+
+.welcome_part img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #252c34;
 }
 
 /*footer part code start*/

@@ -16,6 +16,8 @@
 // include_once "database.php";
 
 require_once "all_function/functions.php";
+
+needLogin();
 get_header();
 get_sidebar();
 

@@ -1,6 +1,7 @@
 <?php
 
 require_once "all_function/functions.php";
+needLogin();
 
 $userID = $_GET['delete'];
 $dataSelect = "SELECT user_photo FROM user_table WHERE user_id='$userID'";

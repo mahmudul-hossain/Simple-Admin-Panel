@@ -22,6 +22,7 @@ $dataSelect="SELECT * FROM user_table NATURAL JOIN user_roles WHERE user_id='$us
 $dataQuery= mysqli_query($connectDatabase,$dataSelect);
 $dataFetch = mysqli_fetch_array($dataQuery);
 
+needLogin();
 get_header();
 get_sidebar();
 

@@ -21,6 +21,7 @@
 // echo ('.jpg');
 
 require_once "all_function/functions.php";
+needLogin();
 
 if (!empty($_POST)) {
   $full_name = $_POST['full-name'];

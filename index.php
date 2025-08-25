@@ -16,6 +16,7 @@
 // include_once "database.php";
 
 require_once "all_function/functions.php";
+needLogin();
 get_header();
 get_sidebar();
 
@@ -31,7 +32,11 @@ get_sidebar();
 <div class="row">
     <div class="col-md-12 welcome_part text-center">
         <p><span>Welcome Mr.</span> <?php echo $_SESSION['full_name'];?></p>
-        <img src="images\avatar.jpg" class="img-fluid mt-5 border-dark rounded-3">
+        <?php 
+            $userPhoto = $_SESSION['user_photo'] != '' ? 'upload-images/' . $_SESSION['user_photo'] : 'images/avatar.jpg';
+        ?>
+        <img src="<?= $userPhoto ?>" class="img-fluid mt-5 border-dark rounded-3">
+
     </div>
 </div>
 

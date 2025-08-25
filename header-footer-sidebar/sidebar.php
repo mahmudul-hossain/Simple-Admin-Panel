@@ -3,7 +3,11 @@
         <div class="row">
             <div class="col-md-2 sidebar_part">
                 <div class="user_part">
-                    <img class="" src="images\avatar.jpg" alt="avatar" />
+                    <?php 
+                        $userPhoto = $_SESSION['user_photo'] != '' ? 'upload-images/' . $_SESSION['user_photo'] : 'images/avatar.jpg';
+                    ?>
+                    <img src="<?= $userPhoto ?>" class="img-fluid">
+
                     <h5><?php echo $_SESSION['full_name'];?></h5>
                     <p><i class="fas fa-circle"></i> Online</p>
                 </div>
