@@ -79,6 +79,8 @@ get_sidebar();
                       </li>
                       <li><a class="dropdown-item" href="edit-user.php?edit=<?php echo $dataFetch['user_id']; ?>">Edit</a>
                       </li>
+                      <li><a class="dropdown-item" href="change-password.php?changePassword=<?php echo $dataFetch['user_id']; ?>">Change Password</a>
+                      </li>
                       <li><a class="dropdown-item" href="delete.php?delete=<?php echo $dataFetch['user_id']; ?>">Delete</a>
                       </li>
                     </ul>
